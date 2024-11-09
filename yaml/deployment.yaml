@@ -1,0 +1,38 @@
+# app-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resttemplate
+  labels:
+    app: resttemplate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resttemplate
+  template:
+    metadata:
+      labels:
+        app: resttemplate
+    spec:
+      containers:
+        - name: resttemplate
+          image: noobdeveloper03/resttemplate:v1.0.6
+          env:
+            - name: API_ENDPOINT
+              value: "http://basicapi-service.default.svc.cluster.local/users"
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: resttemplate-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30002
+  selector:
+    app: resttemplate
