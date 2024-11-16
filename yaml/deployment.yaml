@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: resttemplate
-          image: noobdeveloper03/resttemplate:v1.0.6
+          image: noobdeveloper03/resttemplate:v1.0.7
           env:
             - name: API_ENDPOINT
               value: "http://basicapi-service.default.svc.cluster.local/users"
