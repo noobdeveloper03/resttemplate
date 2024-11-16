@@ -12,6 +12,10 @@ public class UserResponse {
     @Setter
     private String message;
 
+    @Getter
+    @Setter
+    private String service;
+
 
     @Getter
     @Setter
@@ -21,5 +25,11 @@ public class UserResponse {
     public UserResponse(String message, List<User> users) {
         this.message = message;
         this.users = users;
+    }
+
+    public UserResponse(String message,String service, List<User> users) {
+        this.message = message;
+        this.users = users;
+        this.service = service;
     }
 }

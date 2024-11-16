@@ -19,7 +19,8 @@ public class MainController {
 
     @GetMapping("/users")
     public ResponseEntity<UserResponse> getUser() {
-        return new ResponseEntity<>(new UserResponse("Success",userService.getUsers()), HttpStatus.OK);
+//        return new ResponseEntity<>(new UserResponse("Success",userService.getUsers()), HttpStatus.OK);
+        return new ResponseEntity<>(new UserResponse("Success","rest template service",userService.getUsers()), HttpStatus.OK);
     }
 
 

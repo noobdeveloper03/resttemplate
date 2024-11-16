@@ -27,6 +27,7 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Override
     public List<User> getUsers() {
+        System.out.println("Rest API Endpoint = " + env.getProperty("api.user.endpoint"));
         logger.info("Rest API Endpoint = {}",env.getProperty("api.user.endpoint"));
         UserApi userApi = restTemplate.getForObject(env.getProperty("api.user.endpoint"), UserApi.class);
         return userApi.getUsers();

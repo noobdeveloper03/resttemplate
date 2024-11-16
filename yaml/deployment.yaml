@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
         - name: resttemplate
-          image: noobdeveloper03/resttemplate:v1.0.7
+          image: noobdeveloper03/resttemplate:v1.0.8
           env:
             - name: API_ENDPOINT
-              value: "http://basicapi-service.default.svc.cluster.local/users"
+              value: "http://basicapi-service.default.svc.cluster.local:8080/users"
           ports:
             - containerPort: 8080
 ---
