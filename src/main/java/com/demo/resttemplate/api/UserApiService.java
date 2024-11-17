@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface UserApiService {
     List<User> getUsers();
+
+    void createUser(User user);
 }

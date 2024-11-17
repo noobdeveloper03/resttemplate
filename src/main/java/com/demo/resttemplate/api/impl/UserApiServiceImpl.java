@@ -2,6 +2,7 @@ package com.demo.resttemplate.api.impl;
 
 import com.demo.resttemplate.api.dto.UserApi;
 import com.demo.resttemplate.api.UserApiService;
+import com.demo.resttemplate.constant.ApiConstant;
 import com.demo.resttemplate.dto.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +28,15 @@ public class UserApiServiceImpl implements UserApiService {
 
     @Override
     public List<User> getUsers() {
-        System.out.println("Rest API Endpoint = " + env.getProperty("api.user.endpoint"));
-        logger.info("Rest API Endpoint = {}",env.getProperty("api.user.endpoint"));
-        UserApi userApi = restTemplate.getForObject(env.getProperty("api.user.endpoint"), UserApi.class);
+        System.out.println("Rest API Endpoint = " + env.getProperty("api.user.endpoint") + ApiConstant.GET_USERS);
+        logger.info("Rest API Endpoint = {}",env.getProperty("api.user.endpoint") + ApiConstant.GET_USERS);
+        UserApi userApi = restTemplate.getForObject(env.getProperty("api.user.endpoint") + ApiConstant.GET_USERS, UserApi.class);
         return userApi.getUsers();
+    }
+
+    @Override
+    public void createUser(User user) {
+        logger.info("Rest API Endpoint = {}",env.getProperty("api.user.endpoint") + ApiConstant.CREATE_USER);
+        restTemplate.postForEntity(env.getProperty("api.user.endpoint") + ApiConstant.CREATE_USER, user,UserApi.class);
     }
 }

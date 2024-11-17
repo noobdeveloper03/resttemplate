@@ -27,6 +27,10 @@ public class UserResponse {
         this.users = users;
     }
 
+    public UserResponse(String message) {
+        this.message = message;
+    }
+
     public UserResponse(String message,String service, List<User> users) {
         this.message = message;
         this.users = users;
