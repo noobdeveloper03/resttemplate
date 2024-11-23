@@ -29,4 +29,16 @@ public class UserServiceImpl implements UserService {
         logger.info("creating user");
         userApiService.createUser(user);
     }
+
+    @Override
+    public void updateUser(User user) {
+        logger.info("creating user");
+        userApiService.updateUser(user);
+    }
+
+    @Override
+    public void deleteUser(String userId) {
+        logger.info("creating user");
+        userApiService.deleteUser(userId);
+    }
 }

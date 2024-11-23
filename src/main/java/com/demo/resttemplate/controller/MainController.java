@@ -25,8 +25,19 @@ public class MainController {
     @PostMapping("/user")
     public ResponseEntity<UserResponse> createUser(@RequestBody User user) {
         userService.createUser(user);
+        return new ResponseEntity<>(new UserResponse("Success","rest template service"),HttpStatus.OK);
+    }
+
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<UserResponse> deleteUser(@PathVariable("id") String id) {
+        userService.deleteUser(id);
         return new ResponseEntity<>(new UserResponse("Success"),HttpStatus.OK);
     }
 
-
+    @PutMapping("/user/{id}")
+    public ResponseEntity<UserResponse> updateUser(@PathVariable("id") String id,@RequestBody User user) {
+        user.setUserId(id);
+        userService.updateUser(user);
+        return new ResponseEntity<>(new UserResponse("Success"),HttpStatus.OK);
+    }
 }

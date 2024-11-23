@@ -29,14 +29,27 @@ public class UserApiServiceImpl implements UserApiService {
     @Override
     public List<User> getUsers() {
         System.out.println("Rest API Endpoint = " + env.getProperty("api.user.endpoint") + ApiConstant.GET_USERS);
-        logger.info("Rest API Endpoint = {}",env.getProperty("api.user.endpoint") + ApiConstant.GET_USERS);
+        logger.info("METHOD = GET,Rest API Endpoint = {}",env.getProperty("api.user.endpoint") + ApiConstant.GET_USERS);
         UserApi userApi = restTemplate.getForObject(env.getProperty("api.user.endpoint") + ApiConstant.GET_USERS, UserApi.class);
         return userApi.getUsers();
     }
 
     @Override
     public void createUser(User user) {
-        logger.info("Rest API Endpoint = {}",env.getProperty("api.user.endpoint") + ApiConstant.CREATE_USER);
+        System.out.println("user.password = " + user.getPassword());
+        logger.info("Method = CREATE,Rest API Endpoint = {}",env.getProperty("api.user.endpoint") + ApiConstant.CREATE_USER);
         restTemplate.postForEntity(env.getProperty("api.user.endpoint") + ApiConstant.CREATE_USER, user,UserApi.class);
+    }
+
+    @Override
+    public void deleteUser(String userId) {
+        logger.info("Method = DELETE,Rest API Endpoint = {}",env.getProperty("api.user.endpoint") + ApiConstant.DELETE_USER);
+        restTemplate.delete(env.getProperty("api.user.endpoint") + ApiConstant.DELETE_USER + userId);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        logger.info("Method = PUT,Rest API Endpoint = {}",env.getProperty("api.user.endpoint") + ApiConstant.UPDATE_USER);
+        restTemplate.put(env.getProperty("api.user.endpoint") + ApiConstant.DELETE_USER + user.getUserId(),user);
     }
 }

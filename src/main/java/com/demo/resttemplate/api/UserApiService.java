@@ -9,4 +9,8 @@ public interface UserApiService {
     List<User> getUsers();
 
     void createUser(User user);
+
+    void deleteUser(String userId);
+
+    void updateUser(User user);
 }

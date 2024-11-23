@@ -10,7 +10,7 @@ public class User {
 
     @Getter
     @Setter
-    private Long userId;
+    private String userId;
 
     @Getter
     @Setter
